@@ -4,6 +4,7 @@ export class HomePage {
     constructor() {
         this.pageUrl = 'https://www.thomascook.com/';
         this.closePromoBtn = () => element(by.className('e108742-close'));
+        this.cookieWarning = () =>  element(by.id('accept-cookies'));
     }
 
     async open() {
@@ -25,6 +26,17 @@ export class HomePage {
             return true;
         }
         return true;
+    }
+
+    async acceptCookies() {
+        let cookies = this.waitToBeVisible(await this.cookieWarning());
+
+        if (await cookies) {
+            await await this.cookieWarning().click();
+            return true;
+        }
+        return true;
+        
     }
 
     async selectDropdownOption(element, option) {

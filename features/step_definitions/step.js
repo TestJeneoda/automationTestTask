@@ -35,6 +35,7 @@ defineSupportCode(({Given, When, Then, setDefaultTimeout}) => {
     
     try {
       await SearchWidget.getSearchForm();
+      await HomePage.acceptCookies();
     } catch(e) {
       await HomePage.closePromo();
     }
